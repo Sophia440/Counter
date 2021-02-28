@@ -1,17 +1,13 @@
 package com.epam.counter;
 
 public class Counter {
-    private int count;
+    private int count = 0;
 
-    public Counter() {
-        this.count = 0;
-    }
-
-    public void increase() {
+    public synchronized void increase() {
         this.count++;
     }
 
-    public int getCount() {
+    public synchronized int getCount() {
         return count;
     }
 }
