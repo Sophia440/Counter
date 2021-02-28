@@ -1,6 +1,9 @@
 package com.epam.counter;
 
-public class Increaser implements Runnable {
+
+import java.util.concurrent.Callable;
+
+public class Increaser implements Callable<Integer> {
     private final Counter counter;
     private int sleepMillis;
     private int runCount;
@@ -9,19 +12,18 @@ public class Increaser implements Runnable {
         this.counter = counter;
         this.sleepMillis = sleepMillis;
         this.runCount = runCount;
+
     }
 
-    public void run() {
-        synchronized (counter) {
-            for (int i = 0; i < this.runCount; i++) {
-                counter.increase();
-                System.out.println(counter);
-                try {
-                    Thread.sleep(sleepMillis);
-                } catch (InterruptedException e) {
-                    System.err.print(e);
-                }
+    public Integer call() {
+        for (int i = 0; i < this.runCount; i++) {
+            counter.increase();
+            try {
+                Thread.sleep(sleepMillis);
+            } catch (InterruptedException e) {
+                System.err.print(e);
             }
         }
+        return counter.getCount();
     }
 }

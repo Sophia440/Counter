@@ -1,18 +1,17 @@
 package com.epam.counter;
 
 public class Counter {
-    private int counter;
+    private int count;
 
     public Counter() {
-        this.counter = 0;
+        this.count = 0;
     }
 
     public void increase() {
-        this.counter++;
+        this.count++;
     }
 
-    @Override
-    public String toString() {
-        return "counter = " + this.counter;
+    public int getCount() {
+        return count;
     }
 }
