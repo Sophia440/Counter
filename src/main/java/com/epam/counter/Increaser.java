@@ -1,11 +1,11 @@
 package com.epam.counter;
 
-public class IncreaserThread implements Runnable {
+public class Increaser implements Runnable {
     private final Counter counter;
     private int sleepMillis;
     private int runCount;
 
-    public IncreaserThread(Counter counter, int sleepMillis, int runCount) {
+    public Increaser(Counter counter, int sleepMillis, int runCount) {
         this.counter = counter;
         this.sleepMillis = sleepMillis;
         this.runCount = runCount;
